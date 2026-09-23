@@ -1,5 +1,5 @@
 // ===== Storage =====
-const STORAGE_KEY = "binder.v1";
+const STORAGE_KEY = "binder.v2";
 const COLORS = ["#7cf6ab", "#242f7c", "#8baa27", "#8e1010", "#623c7a", "#5C7A4B","#ff0800","#00d9ff","#1fff02","#ff048e", "#6c4095"];
 
 function loadData() {
