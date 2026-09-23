@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#202A22">
+<title>Binder — Catatan Kuliah</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app" class="app">
+
+  <!-- ===== Panel 1: Daftar Binder (mata kuliah) ===== -->
+  <aside id="panelBinders" class="panel panel-binders">
+    <div class="panel-head">
+      <h1 class="brand">Binder</h1>
+      <button id="btnAddBinder" class="btn-icon" title="Tambah binder baru" aria-label="Tambah binder">+</button>
+    </div>
+    <ul id="binderList" class="binder-list"></ul>
+    <p id="binderEmpty" class="empty-hint">Belum ada binder. Bikin satu untuk mulai mencatat, mis. "Kalkulus" atau "Sejarah".</p>
+  </aside>
+
+  <!-- ===== Panel 2: Daftar catatan dalam binder ===== -->
+  <section id="panelNotes" class="panel panel-notes">
+    <div class="panel-head">
+      <button id="btnBackToBinders" class="btn-icon btn-back" aria-label="Kembali ke daftar binder">‹</button>
+      <h2 id="notesTitle" class="panel-title">Pilih binder</h2>
+      <button id="btnAddNote" class="btn-icon" title="Tambah catatan baru" aria-label="Tambah catatan">+</button>
+    </div>
+    <input id="searchNotes" class="search-box" type="search" placeholder="Cari catatan di binder ini…" />
+    <ul id="noteList" class="note-list"></ul>
+    <p id="noteEmpty" class="empty-hint">Belum ada catatan di binder ini.</p>
+  </section>
+
+  <!-- ===== Panel 3: Editor catatan ===== -->
+  <main id="panelEditor" class="panel panel-editor">
+    <div class="panel-head editor-head">
+      <button id="btnBackToNotes" class="btn-icon btn-back" aria-label="Kembali ke daftar catatan">‹</button>
+      <input id="noteTitleInput" class="note-title-input" type="text" placeholder="Judul catatan" />
+      <button id="btnDeleteNote" class="btn-icon btn-danger" title="Hapus catatan" aria-label="Hapus catatan">🗑</button>
+    </div>
+    <div class="editor-meta">
+      <span id="noteMeta"></span>
+      <span id="saveState" class="save-state">Tersimpan</span>
+    </div>
+    <textarea id="noteBody" class="note-body" placeholder="Tulis materi di sini…"></textarea>
+    <div id="editorEmpty" class="empty-state">
+      <p>Pilih atau buat catatan untuk mulai menulis.</p>
+    </div>
+  </main>
+
+</div>
+
+<!-- ===== Dialog: buat / edit binder ===== -->
+<div id="binderDialog" class="dialog-backdrop hidden">
+  <div class="dialog">
+    <h3 id="binderDialogTitle">Binder baru</h3>
+    <label class="field-label" for="binderNameInput">Nama binder</label>
+    <input id="binderNameInput" type="text" placeholder="mis. Statistika" maxlength="60" />
+    <label class="field-label">Warna label</label>
+    <div id="colorPicker" class="color-picker"></div>
+    <div class="dialog-actions">
+      <button id="btnDeleteBinder" class="btn btn-danger-text hidden">Hapus binder</button>
+      <div class="dialog-actions-right">
+        <button id="btnCancelBinder" class="btn btn-ghost">Batal</button>
+        <button id="btnSaveBinder" class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Dialog: import konflik ===== -->
+<div id="toast" class="toast hidden"></div>
+
+<input id="importFileInput" type="file" accept="application/json" class="hidden" />
+
+<footer class="app-footer">
+  <button id="btnExport" class="link-btn">Ekspor semua (.json)</button>
+  <span class="dot">·</span>
+  <button id="btnImport" class="link-btn">Impor</button>
+  <span class="dot">·</span>
+  <span id="storageInfo" class="storage-info"></span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
