@@ -1,4 +1,4 @@
-const CACHE_NAME = "binder-cache-v2";
+const CACHE_NAME = "binder-cache-v3";
 const ASSETS = [
   "./",
   "./index.html",
